@@ -58,8 +58,8 @@ CACHE_FILE="$STATE_DIR/last-update-check"
 MARKER_FILE="$STATE_DIR/just-upgraded-from"
 SNOOZE_FILE="$STATE_DIR/update-snoozed"
 VERSION_FILE="$GSTACK_DIR/VERSION"
-REMOTE_URL="${GSTACK_REMOTE_URL:-https://raw.githubusercontent.com/garrytan/gstack/main/VERSION}"
-REMOTE_REPO="${GSTACK_REMOTE_REPO:-https://github.com/garrytan/gstack.git}"
+REMOTE_URL="${GSTACK_REMOTE_URL:-https://raw.githubusercontent.com/aramis75009/gstack/main/VERSION}"  # CDL fork
+REMOTE_REPO="${GSTACK_REMOTE_REPO:-https://github.com/aramis75009/gstack.git}"  # CDL fork
 
 # ─── Force flag (busts cache + snooze for standalone /gstack-upgrade) ──
 FORCE=0
@@ -256,7 +256,7 @@ if [ -z "${GSTACK_REMOTE_URL:-}" ]; then
       git ls-remote "$1" refs/heads/main 2>/dev/null' _ "$REMOTE_REPO" || true)"
   _REMOTE_SHA="$(echo "$_LSR_LINE" | awk '{print $1}')"
   if echo "$_REMOTE_SHA" | grep -qE '^[0-9a-f]{40}$'; then
-    _SHA_URL="https://raw.githubusercontent.com/garrytan/gstack/${_REMOTE_SHA}/VERSION"
+    _SHA_URL="https://raw.githubusercontent.com/aramis75009/gstack/${_REMOTE_SHA}/VERSION"  # CDL fork
     REMOTE="$(_receipted_version_fetch "$_SHA_URL")"
   fi
 fi
